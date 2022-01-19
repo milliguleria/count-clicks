@@ -4,7 +4,23 @@ from unittest import result
 
 def count_clicks(domain_dict):
     result = {}
+    domain_dict = json.loads(domain_dict)
 
+    for domain, val in domain_dict.items():
+        try:
+            result[domain] += val
+        except:
+            result[domain] = val
+        all_dom = domain.split(".")[1:]
+        temp = ""
+        for idx, i in enumerate(reversed(all_dom)):
+            temp = str(i) + "." + temp
+            if idx == 0:
+                temp = temp[:-1]
+            try:
+                result[temp] += val
+            except:
+                result[temp] = val
     return result
 
 
