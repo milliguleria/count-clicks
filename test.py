@@ -15,6 +15,12 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual(solution.count_clicks('{"amazon.com":23,"google.co.uk":15}'), {
                          'amazon.com': 23, 'com': 23, 'google.co.uk': 15, 'uk': 15, 'co.uk': 15})
 
-    
+    def test_case_zero_clicks(self):
+        self.assertEqual(solution.count_clicks('{"amazon.com":0}'), {'amazon.com': 0, 'com': 0})
+
+    def test_case_empty_json(self):
+        self.assertEqual(solution.count_clicks('{}'), {})
+
+
 if __name__ == '__main__':
     unittest.main()
